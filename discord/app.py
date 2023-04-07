@@ -53,6 +53,8 @@ async def on_message(message):
         await message.channel.send("I am online and receiving messages!")
         return
 
+    # 
+
     # Handle gifbot command
     if message.content.startswith(f"<@{client.user.id}> "):
         # Extract the GIF filename from the message content
@@ -80,6 +82,7 @@ async def on_message(message):
             os.remove(gif_filename)
         else:
             warn(f"Received status code {response.status_code} for URL: {gif_url}")
+            await message.channel.send(f"Sorry, I couldn't find a GIF with the name {gif_filename}.")
 
 
 
